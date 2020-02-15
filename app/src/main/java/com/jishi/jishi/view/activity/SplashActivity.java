@@ -6,6 +6,7 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.jishi.jishi.R;
@@ -23,6 +24,8 @@ public class SplashActivity extends AppCompatActivity {
     public static final int DELAY_MILLIS = 1000;
     public static final int COUNTDOWN_TIME = 3;
 
+    private boolean clickFlag = false;
+
     protected CountdownHandler mHandler = new CountdownHandler(this);
     private TextView txv_countdown;
 
@@ -39,6 +42,16 @@ public class SplashActivity extends AppCompatActivity {
 
         mHandler.sendMessageDelayed(message, DELAY_MILLIS);
 
+        txv_countdown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickFlag = true;
+                Message jmpMsg = Message.obtain();
+                jmpMsg.what = JUMP_OUT_CODE;
+                mHandler.sendMessage(jmpMsg);
+
+            }
+        });
     }
 
     public static class CountdownHandler extends Handler {
@@ -53,20 +66,19 @@ public class SplashActivity extends AppCompatActivity {
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
             SplashActivity activity = mWeakReference.get();
+            int value = msg.arg1;
             switch (msg.what) {
                 case COUNTDOWN_TIME_CODE:
-                    int value = msg.arg1;
-                    activity.txv_countdown.setText(activity.getString(R.string.skip) + (value--));
-
-                    if (value != 0) {
+                    activity.txv_countdown.setText(activity.getString(R.string.skip) + " " + (value--));
+                    if (value >= 0) {
                         Message message = Message.obtain();
                         message.what = COUNTDOWN_TIME_CODE;
                         message.arg1 = value;
                         sendMessageDelayed(message, DELAY_MILLIS);
-                    } else {
+                    } else if (!activity.clickFlag) {
                         Message message = Message.obtain();
                         message.what = JUMP_OUT_CODE;
-                        sendMessageDelayed(message, DELAY_MILLIS);
+                        sendMessage(message);
                     }
                     break;
                 case JUMP_OUT_CODE:
