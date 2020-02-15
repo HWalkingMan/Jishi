@@ -3,11 +3,12 @@
 buildscript {
     
     repositories {
-        jcenter()
-        google()
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
         maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        jcenter()
+        google()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.0-rc03'
@@ -20,14 +21,12 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
-        google()
         maven { url 'https://maven.aliyun.com/repository/google/' }
         maven { url 'https://maven.aliyun.com/repository/jcenter/' }
         maven { url 'https://maven.aliyun.com/repository/gradle-plugin/' }
-
-
-        
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        jcenter()
+        google()
     }
 }
 

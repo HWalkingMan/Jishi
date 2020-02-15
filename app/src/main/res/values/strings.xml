@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Jishi1.5</string>
+    <string name="nullplacehold" />
+    <string name="countdownNum">跳过 3</string>
 </resources>
