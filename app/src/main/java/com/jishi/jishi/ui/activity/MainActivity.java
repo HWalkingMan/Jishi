@@ -1,5 +1,6 @@
 package com.jishi.jishi.ui.activity;
 
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -9,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.jishi.jishi.R;
+import com.jishi.jishi.ui.adapter.MainFragmentAdapter;
 import com.jishi.jishi.ui.fragment.MainFragment;
 import com.jishi.jishi.ui.fragment.MeFragment;
 import com.jishi.jishi.ui.fragment.MessageFragment;
@@ -18,16 +20,20 @@ import com.jishi.jishi.ui.fragment.MessageFragment;
  * @description
  * @date 2020/2/14 21:45
  */
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
 
     public static final long MAX_EXIT_TIME = 2000;
+    public static final int STATE_SCROLL_DONE = 2;
     protected LinearLayout mMenuMain;
     protected LinearLayout mMenuMessage;
     protected LinearLayout mMenuMe;
-    protected MainFragment mMainFragment = new MainFragment();
-    protected MessageFragment mMessageFragment = new MessageFragment();
-    protected MeFragment mMeFragment = new MeFragment();
+    private ViewPager viewPager;
 
+    private MainFragmentAdapter mAdapter;
+
+    public static final int PAGE_ONE = 0;
+    public static final int PAGE_TWO = 1;
+    public static final int PAGE_THREE = 2;
 
 
     @Override
@@ -35,18 +41,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initView();
+        mAdapter = new MainFragmentAdapter(getSupportFragmentManager());
 
-        //获取管理类
-        this.getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.container_content, mMainFragment)
-                .hide(mMainFragment)
-                .add(R.id.container_content, mMessageFragment)
-                .hide(mMessageFragment)
-                .add(R.id.container_content, mMeFragment)
-                .hide(mMeFragment)
-                .commit();
+        initView();
 
         mMenuMain.performClick();
     }
@@ -55,10 +52,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mMenuMain = this.findViewById(R.id.ly_menu_index);
         mMenuMessage = this.findViewById(R.id.ly_menu_message);
         mMenuMe = this.findViewById(R.id.ly_menu_me);
+        viewPager = this.findViewById(R.id.container_content);
 
         mMenuMain.setOnClickListener(this);
         mMenuMessage.setOnClickListener(this);
         mMenuMe.setOnClickListener(this);
+
+        viewPager.setAdapter(mAdapter);
+        viewPager.setCurrentItem(PAGE_ONE);
+        viewPager.addOnPageChangeListener(this);
     }
 
     private void resetSelect() {
@@ -73,38 +75,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.ly_menu_index:
                 mMenuMain.setSelected(true);
-
-                this.getSupportFragmentManager()
-                        .beginTransaction()
-                        .show(mMainFragment)
-                        .hide(mMessageFragment)
-                        .hide(mMeFragment)
-                        .commit();
+                viewPager.setCurrentItem(PAGE_ONE);
                 break;
             case R.id.ly_menu_message:
                 mMenuMessage.setSelected(true);
-                this.getSupportFragmentManager()
-                        .beginTransaction()
-                        .hide(mMainFragment)
-                        .show(mMessageFragment)
-                        .hide(mMeFragment)
-                        .commit();
+                viewPager.setCurrentItem(PAGE_TWO);
                 break;
             case R.id.ly_menu_me:
                 mMenuMe.setSelected(true);
-                this.getSupportFragmentManager()
-                        .beginTransaction()
-                        .hide(mMainFragment)
-                        .hide(mMessageFragment)
-                        .show(mMeFragment)
-                        .commit();
+                viewPager.setCurrentItem(PAGE_THREE);
                 break;
             default:
                 break;
         }
     }
 
-    long exitTime = 0;
+
+    private long exitTime = 0;
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -122,6 +109,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onKeyDown(keyCode, event);
     }
 
+    @Override
+    public void onPageScrolled(int i, float v, int i1) {
+    }
+
+    @Override
+    public void onPageSelected(int i) {
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+        if (state == STATE_SCROLL_DONE) {
+            resetSelect();
+            switch (viewPager.getCurrentItem()) {
+                case PAGE_ONE:
+                    mMenuMain.setSelected(true);
+                    break;
+                case PAGE_TWO:
+                    mMenuMessage.setSelected(true);
+                    break;
+                case PAGE_THREE:
+                    mMenuMe.setSelected(true);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
     /*小红点操作方法
     有数量
     TextView tab_menu_channel_num = getActivity ().findViewById(R.id.tab_menu_me_num);
