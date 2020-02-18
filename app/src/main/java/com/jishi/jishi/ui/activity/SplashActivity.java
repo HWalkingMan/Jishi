@@ -1,4 +1,4 @@
-package com.jishi.jishi.view.activity;
+package com.jishi.jishi.ui.activity;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -14,9 +14,9 @@ import com.jishi.jishi.R;
 import java.lang.ref.WeakReference;
 
 /**
- * @Description
- * @Author WM
- * @Date 2020/2/15 20:45
+ * @description
+ * @author WM
+ * @date 2020/2/15 20:45
  */
 public class SplashActivity extends AppCompatActivity {
     public static final int COUNTDOWN_TIME_CODE = 10001;
