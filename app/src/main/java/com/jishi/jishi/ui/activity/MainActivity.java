@@ -1,93 +1,64 @@
 package com.jishi.jishi.ui.activity;
 
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.jishi.jishi.R;
-import com.jishi.jishi.ui.adapter.MainFragmentAdapter;
-import com.jishi.jishi.ui.fragment.MainFragment;
-import com.jishi.jishi.ui.fragment.MeFragment;
-import com.jishi.jishi.ui.fragment.MessageFragment;
+
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 /**
  * @author WM
  * @description
- * @date 2020/2/14 21:45
+ * @date 2020/2/22 18:08
  */
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, ViewPager.OnPageChangeListener {
+public class MainActivity extends AppCompatActivity {
+
+    private AppBarConfiguration mAppBarConfiguration;
 
     public static final long MAX_EXIT_TIME = 2000;
-    public static final int STATE_SCROLL_DONE = 2;
-    protected LinearLayout mMenuMain;
-    protected LinearLayout mMenuMessage;
-    protected LinearLayout mMenuMe;
-    private ViewPager viewPager;
-
-    private MainFragmentAdapter mAdapter;
-
-    public static final int PAGE_ONE = 0;
-    public static final int PAGE_TWO = 1;
-    public static final int PAGE_THREE = 2;
-
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mAdapter = new MainFragmentAdapter(getSupportFragmentManager());
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        initView();
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
 
-        mMenuMain.performClick();
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                .setDrawerLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
+
     }
 
-    private void initView() {
-        mMenuMain = this.findViewById(R.id.ly_menu_index);
-        mMenuMessage = this.findViewById(R.id.ly_menu_message);
-        mMenuMe = this.findViewById(R.id.ly_menu_me);
-        viewPager = this.findViewById(R.id.container_content);
-
-        mMenuMain.setOnClickListener(this);
-        mMenuMessage.setOnClickListener(this);
-        mMenuMe.setOnClickListener(this);
-
-        viewPager.setAdapter(mAdapter);
-        viewPager.setCurrentItem(PAGE_ONE);
-        viewPager.addOnPageChangeListener(this);
-    }
-
-    private void resetSelect() {
-        mMenuMain.setSelected(false);
-        mMenuMessage.setSelected(false);
-        mMenuMe.setSelected(false);
-    }
 
     @Override
-    public void onClick(View view) {
-        resetSelect();
-        switch (view.getId()) {
-            case R.id.ly_menu_index:
-                mMenuMain.setSelected(true);
-                viewPager.setCurrentItem(PAGE_ONE);
-                break;
-            case R.id.ly_menu_message:
-                mMenuMessage.setSelected(true);
-                viewPager.setCurrentItem(PAGE_TWO);
-                break;
-            case R.id.ly_menu_me:
-                mMenuMe.setSelected(true);
-                viewPager.setCurrentItem(PAGE_THREE);
-                break;
-            default:
-                break;
-        }
+    public boolean onSupportNavigateUp() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        assert fragment != null;
+        return NavHostFragment.findNavController(fragment).navigateUp();
     }
 
 
@@ -108,43 +79,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return super.onKeyDown(keyCode, event);
     }
-
-    @Override
-    public void onPageScrolled(int i, float v, int i1) {
-    }
-
-    @Override
-    public void onPageSelected(int i) {
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-        if (state == STATE_SCROLL_DONE) {
-            resetSelect();
-            switch (viewPager.getCurrentItem()) {
-                case PAGE_ONE:
-                    mMenuMain.setSelected(true);
-                    break;
-                case PAGE_TWO:
-                    mMenuMessage.setSelected(true);
-                    break;
-                case PAGE_THREE:
-                    mMenuMe.setSelected(true);
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-    /*小红点操作方法
-    有数量
-    TextView tab_menu_channel_num = getActivity ().findViewById(R.id.tab_menu_me_num);
-    tab_menu_channel_num.setText("11");
-    tab_menu_channel_num.setVisibility(View.VISIBLE);
-
-    无数量
-    ImageView tab_menu_setting_partner = (ImageView) getActivity ().findViewById(R.id.tab_menu_index_partner);
-    tab_menu_setting_partner.setVisibility(View.VISIBLE);
-     */
-
 }

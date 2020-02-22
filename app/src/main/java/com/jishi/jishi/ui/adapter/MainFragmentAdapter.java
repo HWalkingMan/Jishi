@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
 
-import com.jishi.jishi.ui.activity.MainActivity;
+import com.jishi.jishi.ui.fragment.ContentFrameFragment;
 import com.jishi.jishi.ui.fragment.MainFragment;
 import com.jishi.jishi.ui.fragment.MeFragment;
 import com.jishi.jishi.ui.fragment.MessageFragment;
@@ -18,9 +18,9 @@ import com.jishi.jishi.ui.fragment.MessageFragment;
  */
 public class MainFragmentAdapter extends FragmentPagerAdapter {
     private final int PAGER_COUNT = 3;
-    protected MainFragment mMainFragment = null;
-    protected MessageFragment mMessageFragment = null;
-    protected MeFragment mMeFragment = null;
+    private MainFragment mMainFragment;
+    private MessageFragment mMessageFragment;
+    private MeFragment mMeFragment;
 
     public MainFragmentAdapter(FragmentManager fm) {
         super(fm);
@@ -39,13 +39,13 @@ public class MainFragmentAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         Fragment fragment = null;
         switch (position) {
-            case MainActivity.PAGE_ONE:
+            case ContentFrameFragment.PAGE_ONE:
                 fragment = mMainFragment;
                 break;
-            case MainActivity.PAGE_TWO:
+            case ContentFrameFragment.PAGE_TWO:
                 fragment = mMessageFragment;
                 break;
-            case MainActivity.PAGE_THREE:
+            case ContentFrameFragment.PAGE_THREE:
                 fragment = mMeFragment;
                 break;
             default:
