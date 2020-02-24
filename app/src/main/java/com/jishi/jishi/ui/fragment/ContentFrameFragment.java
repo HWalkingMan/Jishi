@@ -1,6 +1,5 @@
 package com.jishi.jishi.ui.fragment;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.jishi.jishi.R;
-import com.jishi.jishi.ui.adapter.MainFragmentAdapter;
+import com.jishi.jishi.ui.adapter.ContentFragmentAdapter;
 
 public class ContentFrameFragment extends Fragment implements View.OnClickListener, ViewPager.OnPageChangeListener {
 
@@ -22,7 +21,7 @@ public class ContentFrameFragment extends Fragment implements View.OnClickListen
     protected LinearLayout mMenuMe;
     private ViewPager viewPager;
 
-    private MainFragmentAdapter mAdapter;
+    private ContentFragmentAdapter mAdapter;
 
     public static final int PAGE_ONE = 0;
     public static final int PAGE_TWO = 1;
@@ -44,7 +43,7 @@ public class ContentFrameFragment extends Fragment implements View.OnClickListen
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        mAdapter = new MainFragmentAdapter(getChildFragmentManager());
+        mAdapter = new ContentFragmentAdapter(getChildFragmentManager());
         initView();
         mMenuMain.performClick();
     }
@@ -52,9 +51,9 @@ public class ContentFrameFragment extends Fragment implements View.OnClickListen
     private void initView() {
         if (null == getView())
             return;
-        mMenuMain = getView().findViewById(R.id.ly_menu_index);
+        mMenuMain = getView().findViewById(R.id.ly_menu_home);
         mMenuMessage = getView().findViewById(R.id.ly_menu_message);
-        mMenuMe = getView().findViewById(R.id.ly_menu_me);
+        mMenuMe = getView().findViewById(R.id.ly_menu_moment);
         viewPager = getView().findViewById(R.id.container_content);
 
         mMenuMain.setOnClickListener(this);
@@ -76,7 +75,7 @@ public class ContentFrameFragment extends Fragment implements View.OnClickListen
     public void onClick(View view) {
         resetSelect();
         switch (view.getId()) {
-            case R.id.ly_menu_index:
+            case R.id.ly_menu_home:
                 mMenuMain.setSelected(true);
                 viewPager.setCurrentItem(PAGE_ONE);
                 break;
@@ -84,7 +83,7 @@ public class ContentFrameFragment extends Fragment implements View.OnClickListen
                 mMenuMessage.setSelected(true);
                 viewPager.setCurrentItem(PAGE_TWO);
                 break;
-            case R.id.ly_menu_me:
+            case R.id.ly_menu_moment:
                 mMenuMe.setSelected(true);
                 viewPager.setCurrentItem(PAGE_THREE);
                 break;

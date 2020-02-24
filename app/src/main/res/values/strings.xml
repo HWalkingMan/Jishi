@@ -3,4 +3,15 @@
     <string name="nullplacehold" />
     <string name="countdownNum">跳过 3</string>
     <string name="skip">跳过</string>
+
+    <string-array name="main_menu">
+        <item>实时通知</item>
+        <item>学我所爱</item>
+        <item>交流社区</item>
+        <item>游山玩水</item>
+        <item>购物狂欢</item>
+        <item>商铺推荐</item>
+        <item>户外健身</item>
+        <item>公交巴士</item>
+    </string-array>
 </resources>

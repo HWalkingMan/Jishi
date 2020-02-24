@@ -7,8 +7,8 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
 
 import com.jishi.jishi.ui.fragment.ContentFrameFragment;
-import com.jishi.jishi.ui.fragment.MainFragment;
-import com.jishi.jishi.ui.fragment.MeFragment;
+import com.jishi.jishi.ui.fragment.HomeFragment;
+import com.jishi.jishi.ui.fragment.MomentFragment;
 import com.jishi.jishi.ui.fragment.MessageFragment;
 
 /**
@@ -16,17 +16,17 @@ import com.jishi.jishi.ui.fragment.MessageFragment;
  * @description
  * @date 2020/2/18 23:00
  */
-public class MainFragmentAdapter extends FragmentPagerAdapter {
+public class ContentFragmentAdapter extends FragmentPagerAdapter {
     private final int PAGER_COUNT = 3;
-    private MainFragment mMainFragment;
+    private HomeFragment mHomeFragment;
     private MessageFragment mMessageFragment;
-    private MeFragment mMeFragment;
+    private MomentFragment mMomentFragment;
 
-    public MainFragmentAdapter(FragmentManager fm) {
+    public ContentFragmentAdapter(FragmentManager fm) {
         super(fm);
-        mMainFragment = new MainFragment();
+        mHomeFragment = new HomeFragment();
         mMessageFragment = new MessageFragment();
-        mMeFragment = new MeFragment();
+        mMomentFragment = new MomentFragment();
     }
 
     @Override
@@ -40,13 +40,13 @@ public class MainFragmentAdapter extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch (position) {
             case ContentFrameFragment.PAGE_ONE:
-                fragment = mMainFragment;
+                fragment = mHomeFragment;
                 break;
             case ContentFrameFragment.PAGE_TWO:
                 fragment = mMessageFragment;
                 break;
             case ContentFrameFragment.PAGE_THREE:
-                fragment = mMeFragment;
+                fragment = mMomentFragment;
                 break;
             default:
                 break;
