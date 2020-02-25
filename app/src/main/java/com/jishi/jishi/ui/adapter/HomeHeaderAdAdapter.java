@@ -9,7 +9,9 @@ import android.widget.ImageView;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/11/7.
+ * @author WM
+ * @description
+ * @date 2020/2/25 0:40
  */
 public class HomeHeaderAdAdapter extends PagerAdapter {
 
