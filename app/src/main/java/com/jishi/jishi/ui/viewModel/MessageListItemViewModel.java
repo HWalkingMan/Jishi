@@ -2,6 +2,7 @@ package com.jishi.jishi.ui.viewModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * @author WM
@@ -9,33 +10,24 @@ import java.util.Date;
  * @date 2020/2/26 11:40
  */
 public class MessageListItemViewModel {
-    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    //TODO 更改时间显示模式
+
 
     private String id;
     private int SenderAvatar;
     private String senderNickName;
-    private String latestMsgDate;
+    private Date latestMsgDate;
     private String latestMsgPart;
     private int newMsgNum;
 
     public MessageListItemViewModel() {
     }
 
-    public MessageListItemViewModel(String id, int senderAvatar, String senderNickName, String latestMsgDate, String latestMsgPart, int newMsgNum) {
-        this.id = id;
-        SenderAvatar = senderAvatar;
-        this.senderNickName = senderNickName;
-        this.latestMsgDate = latestMsgDate;
-        this.latestMsgPart = format(latestMsgPart);
-        this.newMsgNum = newMsgNum;
-    }
 
     public MessageListItemViewModel(String id, int senderAvatar, String senderNickName, Date latestMsgDate, String latestMsgPart, int newMsgNum) {
         this.id = id;
         SenderAvatar = senderAvatar;
         this.senderNickName = senderNickName;
-        this.latestMsgDate = sdf.format(latestMsgDate);
+        this.latestMsgDate = latestMsgDate;
         this.latestMsgPart = format(latestMsgPart);
         this.newMsgNum = newMsgNum;
     }
@@ -64,16 +56,29 @@ public class MessageListItemViewModel {
         this.senderNickName = senderNickName;
     }
 
-    public String getLatestMsgDate() {
+    public Date getLatestMsgDate() {
         return latestMsgDate;
     }
 
-    public void setLatestMsgDate(String latestMsgDate) {
-        this.latestMsgDate = latestMsgDate;
+    public String getLastestMsgDateStr(Date currentDate) {
+        SimpleDateFormat sdf;
+        //latestMsgDateStr = sdf.format(latestMsgDate);
+        //TODO 更改时间显示模式
+        int day = (int) ((currentDate.getTime() - latestMsgDate.getTime()) / (1000 * 60 * 60 * 24));
+        System.out.println("date:" + latestMsgDate + ",day=" + day);
+        if (day == 0) {
+            return new SimpleDateFormat("HH:mm", Locale.CHINA).format(latestMsgDate);
+        } else if (day == 1) {
+            return "昨天";
+        } else if (day < 7) {
+            return new SimpleDateFormat("E", Locale.CHINA).format(latestMsgDate);
+        } else {
+            return new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(latestMsgDate);
+        }
     }
 
     public void setLatestMsgDate(Date latestMsgDate) {
-        this.latestMsgDate = sdf.format(latestMsgDate);
+        this.latestMsgDate = latestMsgDate;
     }
 
     public int getNewMsgNum() {

@@ -9,7 +9,7 @@ import java.util.Date;
  * @date 2020/2/25 23:33
  */
 public class MomentListItemViewModel {
-    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     private String id;
     private String senderNickName;

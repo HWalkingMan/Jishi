@@ -13,6 +13,7 @@ import com.jishi.jishi.R;
 import com.jishi.jishi.ui.viewModel.MessageListItemViewModel;
 
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -31,6 +32,12 @@ public class MessageListAdapter extends BaseAdapter {
         this.context = context;
         this.data = data;
         layoutInflater = LayoutInflater.from(context);
+        this.data.sort(new Comparator<MessageListItemViewModel>() {
+            @Override
+            public int compare(MessageListItemViewModel o1, MessageListItemViewModel o2) {
+                return o2.getLatestMsgDate().compareTo(o1.getLatestMsgDate());
+            }
+        });
     }
 
     @Override
@@ -69,7 +76,7 @@ public class MessageListAdapter extends BaseAdapter {
 
         viewHolder.avatar.setImageResource(msg.getSenderAvatar());
         viewHolder.senderNickName.setText(msg.getSenderNickName());
-        viewHolder.sendDate.setText(msg.getLatestMsgDate());
+        viewHolder.sendDate.setText(msg.getLastestMsgDateStr(new Date()));
         viewHolder.msgPart.setText(msg.getLatestMsgPart());
 
         if (msg.getNewMsgNum() == 0) {
