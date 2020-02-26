@@ -3,12 +3,7 @@ package com.jishi.jishi.ui.adapter;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-
 import com.jishi.jishi.R;
 import com.jishi.jishi.ui.viewModel.HomeMenuViewHolder;
 import com.jishi.jishi.ui.viewModel.HomeMenuViewModel;
@@ -48,5 +43,3 @@ public class HomeMenuAdapter extends RecyclerView.Adapter<HomeMenuViewHolder> {
         return null != menus ? menus.size() : 0;
     }
 }
-
-

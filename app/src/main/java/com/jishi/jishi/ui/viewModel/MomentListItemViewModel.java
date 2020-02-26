@@ -1,4 +1,4 @@
-package com.jishi.jishi.entity;
+package com.jishi.jishi.ui.viewModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,7 +8,7 @@ import java.util.Date;
  * @description
  * @date 2020/2/25 23:33
  */
-public class MomentMsg {
+public class MomentListItemViewModel {
     private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     private String id;
@@ -18,11 +18,12 @@ public class MomentMsg {
     private int image;
     private String contentText;
     private int numReaders;
+    private boolean liked;
 
-    public MomentMsg() {
+    public MomentListItemViewModel() {
     }
 
-    public MomentMsg(String id, String senderNickName, String sendDate, int senderAvatar, int image, String contentText, int numReaders) {
+    public MomentListItemViewModel(String id, String senderNickName, String sendDate, int senderAvatar, int image, String contentText, int numReaders, boolean liked) {
         this.id = id;
         this.senderNickName = senderNickName;
         this.sendDate = sendDate;
@@ -30,9 +31,10 @@ public class MomentMsg {
         this.image = image;
         this.contentText = contentText;
         this.numReaders = numReaders;
+        this.liked = liked;
     }
 
-    public MomentMsg(String id, String senderNickName, Date sendDate, int senderAvatar, int image, String contentText, int numReaders) {
+    public MomentListItemViewModel(String id, String senderNickName, Date sendDate, int senderAvatar, int image, String contentText, int numReaders, boolean liked) {
         this.id = id;
         this.senderNickName = senderNickName;
         this.sendDate = sdf.format(sendDate);
@@ -40,6 +42,7 @@ public class MomentMsg {
         this.image = image;
         this.contentText = contentText;
         this.numReaders = numReaders;
+        this.liked = liked;
     }
 
     public String getId() {
@@ -100,5 +103,13 @@ public class MomentMsg {
 
     public void setNumReaders(int numReaders) {
         this.numReaders = numReaders;
+    }
+
+    public boolean isLiked() {
+        return liked;
+    }
+
+    public void setLiked(boolean liked) {
+        this.liked = liked;
     }
 }

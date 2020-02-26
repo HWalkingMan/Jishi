@@ -7,11 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.jishi.jishi.R;
-import com.jishi.jishi.entity.MomentMsg;
+import com.jishi.jishi.ui.viewModel.MomentListItemViewModel;
 import com.jishi.jishi.testData.MomentMsgTD;
 import com.jishi.jishi.ui.adapter.MomentMsgListAdapter;
 
@@ -25,7 +24,7 @@ import java.util.List;
  */
 public class MomentFragment extends Fragment {
     private ListView listView;
-    private List<MomentMsg> momentMsgs = new ArrayList<>();
+    private List<MomentListItemViewModel> momentListItemViewModels = new ArrayList<>();
     private MomentMsgListAdapter adapter;
 
     @Nullable
@@ -40,12 +39,10 @@ public class MomentFragment extends Fragment {
 
         listView = getView().findViewById(R.id.lv_moment_list);
 
-        momentMsgs.addAll(MomentMsgTD.getMessage());
-        adapter = new MomentMsgListAdapter(getContext(), momentMsgs);
+        momentListItemViewModels.addAll(MomentMsgTD.getMessage());
+        //TODO messageListItemViewModels need real data
 
+        adapter = new MomentMsgListAdapter(getContext(), momentListItemViewModels);
         listView.setAdapter(adapter);
     }
 }
-
-
-

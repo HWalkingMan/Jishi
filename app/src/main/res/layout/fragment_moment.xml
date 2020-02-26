@@ -8,6 +8,4 @@
     android:divider="@null"
     android:background="@color/white"
     android:paddingTop="8dp">
-
-
 </ListView>

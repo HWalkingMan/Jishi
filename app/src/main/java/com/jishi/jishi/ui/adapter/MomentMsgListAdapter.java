@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jishi.jishi.R;
-import com.jishi.jishi.entity.MomentMsg;
+import com.jishi.jishi.ui.viewModel.MomentListItemViewModel;
 
 import java.util.List;
 import java.util.Random;
@@ -22,9 +22,9 @@ import java.util.Random;
 public class MomentMsgListAdapter extends BaseAdapter {
     private Context context;
     private LayoutInflater layoutInflater;
-    private List<MomentMsg> data;
+    private List<MomentListItemViewModel> data;
 
-    public MomentMsgListAdapter(Context context, List<MomentMsg> data) {
+    public MomentMsgListAdapter(Context context, List<MomentListItemViewModel> data) {
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
         this.data = data;
@@ -36,7 +36,7 @@ public class MomentMsgListAdapter extends BaseAdapter {
     }
 
     @Override
-    public MomentMsg getItem(int position) {
+    public MomentListItemViewModel getItem(int position) {
         return data.get(position);
     }
 
@@ -69,13 +69,13 @@ public class MomentMsgListAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        MomentMsg msg = data.get(position);
+        MomentListItemViewModel msg = data.get(position);
 
         viewHolder.text.setText(msg.getContentText());
         viewHolder.senderNickName.setText(msg.getSenderNickName());
         viewHolder.sendDate.setText(msg.getSendDate());
         viewHolder.numReader.setText(String.valueOf(msg.getNumReaders()));
-        viewHolder.like.setSelected(new Random().nextBoolean());
+        viewHolder.like.setSelected(msg.isLiked());
         viewHolder.image.setImageResource(msg.getImage());
         viewHolder.avatar.setImageResource(msg.getSenderAvatar());
 
