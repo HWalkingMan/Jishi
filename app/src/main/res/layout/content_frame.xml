@@ -76,13 +76,14 @@
                     android:text="消息" />
 
                 <TextView
+                    android:id="@+id/tab_menu_message_num"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginLeft="-10dp"
-                    android:id="@+id/tab_menu_message_num"
                     style="@style/tab_menu_bgnum"
                     android:layout_toRightOf="@+id/tab_menu_message"
                     android:text="99+"
+                    android:textSize="10sp"
                     android:visibility="gone" />
             </RelativeLayout>
         </LinearLayout>
@@ -114,6 +115,7 @@
                     style="@style/tab_menu_bgnum"
                     android:layout_toRightOf="@+id/tab_menu_moment"
                     android:text="99+"
+                    android:textSize="10sp"
                     android:visibility="gone" />
             </RelativeLayout>
         </LinearLayout>

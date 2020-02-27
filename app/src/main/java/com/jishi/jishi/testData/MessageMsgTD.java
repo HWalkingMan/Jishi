@@ -30,12 +30,12 @@ public class MessageMsgTD {
                 "东西在你桌子上", 1));
         list.add(new MessageListItemViewModel("5", R.mipmap.ic_default_user_avatar,
                 "Amy justinland", new Date(120, 1, 26, 10, 13, 34),
-                "886", 150));
+                "886", 10));
         list.add(new MessageListItemViewModel("5", R.mipmap.ic_default_user_avatar,
                 "Alibaba", new Date(120, 1, 25, 22, 13, 34),
-                "886", 150));
+                "886", 5));
         list.add(new MessageListItemViewModel("6", R.mipmap.ic_default_user_avatar,
-                "Sam", new Date(), "886", 150));
+                "Sam", new Date(), "886", 15));
 
 
         return list;

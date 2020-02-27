@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 import com.jishi.jishi.R;
@@ -54,6 +55,26 @@ public class MessageFragment extends Fragment {
 
         adapter = new MessageListAdapter(getContext(), messageListItemViewModels);
         initView();
+        perpareView();
+    }
+
+    private void perpareView() {
+        int totalNewMsg = 0;
+        for (MessageListItemViewModel vo : messageListItemViewModels) {
+            totalNewMsg += vo.getNewMsgNum();
+        }
+        TextView numNewMsg = getActivity().findViewById(R.id.tab_menu_message_num);
+        if (totalNewMsg == 0) {
+            numNewMsg.setVisibility(View.GONE);
+            numNewMsg.setText("");
+        } else if (totalNewMsg > 99) {
+            numNewMsg.setText("99+");
+            numNewMsg.setVisibility(View.VISIBLE);
+        } else {
+            numNewMsg.setText(String.valueOf(totalNewMsg));
+            numNewMsg.setVisibility(View.VISIBLE);
+        }
+
     }
 
     private void initView() {
