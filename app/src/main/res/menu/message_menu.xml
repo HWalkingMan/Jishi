@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/message_menu_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="搜索"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/message_menu_addFriend"
+        android:icon="@mipmap/ic_addnewfriend_black"
+        android:title="新的朋友"
+        app:showAsAction="never|withText" />
+
+    <item
+        android:id="@+id/message_menu_newChat"
+        android:icon="@mipmap/ic_newchat"
+        android:title="发起聊天"
+        app:showAsAction="never|withText" />
+
+    <item
+        android:id="@+id/message_menu_newGroupChat"
+        android:icon="@mipmap/ic_groupchat"
+        android:title="新的群聊"
+        app:showAsAction="never|withText" />
+
+
+</menu>

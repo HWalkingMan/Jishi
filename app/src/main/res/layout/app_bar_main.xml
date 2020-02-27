@@ -16,9 +16,11 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:navigationIcon="@drawable/ic_menu_camera"
+            app:navigationIcon="@mipmap/ic_default_user_avatar"
+            app:contentInsetStartWithNavigation="0dp"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="asdasd" />
+            app:expandedTitleGravity="center"
+            tools:title="default" />
 
     </android.support.design.widget.AppBarLayout>
 

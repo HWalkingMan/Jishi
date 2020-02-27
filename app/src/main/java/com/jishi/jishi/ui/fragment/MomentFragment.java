@@ -4,7 +4,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -27,6 +30,12 @@ public class MomentFragment extends Fragment {
     private List<MomentListItemViewModel> momentListItemViewModels = new ArrayList<>();
     private MomentMsgListAdapter adapter;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,12 +46,36 @@ public class MomentFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        //TODO messageListItemViewModels need real data
+        momentListItemViewModels.addAll(MomentMsgTD.getMessage());
+        adapter = new MomentMsgListAdapter(getContext(), momentListItemViewModels);
+
+        initView();
+    }
+
+    private void initView() {
+        if (null == getView())
+            return;
         listView = getView().findViewById(R.id.lv_moment_list);
 
-        momentListItemViewModels.addAll(MomentMsgTD.getMessage());
-        //TODO messageListItemViewModels need real data
-
-        adapter = new MomentMsgListAdapter(getContext(), momentListItemViewModels);
         listView.setAdapter(adapter);
+    }
+
+    public static void toolbarUsage(Toolbar toolbar) {
+        toolbar.setTitle("圈子");
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        assert getActivity() != null;
+        menu.clear();
+        getActivity().getMenuInflater().inflate(R.menu.moment_menu, menu);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        assert getActivity() != null;
+        menu.clear();
+        getActivity().getMenuInflater().inflate(R.menu.moment_menu, menu);
     }
 }
