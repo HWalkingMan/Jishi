@@ -5,16 +5,20 @@
     <!-- TODO   需更换图片-->
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="home" />
+            android:id="@+id/nav_menu_style"
+            android:icon="@drawable/navigation_menu_style"
+            android:title="个性装扮" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="gallery" />
+            android:id="@+id/nav_menu_favourite"
+            android:icon="@drawable/navigation_menu_favourite"
+            android:title="我的收藏" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="slideshow" />
+            android:id="@+id/nav_menu_album"
+            android:icon="@drawable/navigation_menu_album"
+            android:title="我的相册" />
+        <item
+            android:id="@+id/nav_menu_file"
+            android:icon="@drawable/navigation_menu_file"
+            android:title="我的文件" />
     </group>
 </menu>
