@@ -12,3 +12,6 @@
 /captures
 .externalNativeBuild
 .cxx
+libs/
+src/main/java/com/jishi/jishi/entity/
+src/main/java/com/jishi/jishi/service/

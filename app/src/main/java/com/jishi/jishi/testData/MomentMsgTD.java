@@ -18,19 +18,19 @@ public class MomentMsgTD {
 
         momentListItemViewModels.add(new MomentListItemViewModel("1", "York", new Date(),
                 R.mipmap.ic_default_user_avatar, R.mipmap.moment_img01,
-                "我好想你啊，你却不理我", 74,true));
+                "大学物理要记得知识点都在这里了！", 74, true));
         momentListItemViewModels.add(new MomentListItemViewModel("2", "Sun", new Date(),
                 R.mipmap.ic_default_user_avatar, R.mipmap.moment_img02,
-                "我想要见到你", 704,false));
+                "中南周边，夏天必去的8个地方", 704, false));
         momentListItemViewModels.add(new MomentListItemViewModel("3", "Smith.Li", new Date(),
                 R.mipmap.ic_default_user_avatar, R.mipmap.moment_img03,
-                "我想要你的亲亲", 174,false));
+                "五一拿到的新的资格证书！！炫耀~", 174, false));
         momentListItemViewModels.add(new MomentListItemViewModel("4", "BigBang", new Date(),
                 R.mipmap.ic_default_user_avatar, R.mipmap.moment_img04,
-                "我想要你的抱抱", 84,false));
+                "并夕夕帮砍！急求！谁还不是个宝宝", 84, false));
         momentListItemViewModels.add(new MomentListItemViewModel("5", "Justin", new Date(),
                 R.mipmap.ic_default_user_avatar, R.mipmap.moment_img05,
-                "为什么那", 23,true));
+                "爷笑了", 23, true));
         return momentListItemViewModels;
     }
 }

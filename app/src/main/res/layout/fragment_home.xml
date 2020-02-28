@@ -64,7 +64,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="秋天真的来了，吃火锅就按这个火锅地图走!"
+                    android:text="受疫情影响，假期可能再次延长!"
                     android:layout_weight="1"
                     android:textColor="#000000" />
             </LinearLayout>
