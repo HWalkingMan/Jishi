@@ -2,6 +2,13 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/message_menu_search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="搜索"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/moment_menu_addnew"
         android:icon="@mipmap/ic_newmoment"
         android:title="新的想法"
