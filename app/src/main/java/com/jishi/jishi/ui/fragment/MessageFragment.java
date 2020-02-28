@@ -13,13 +13,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.view.animation.LinearInterpolator;
+import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 
 import com.jishi.jishi.R;
+import com.jishi.jishi.entity.FriendChapter;
 import com.jishi.jishi.testData.MessageMsgTD;
+import com.jishi.jishi.ui.adapter.MessageFriendsAdapter;
 import com.jishi.jishi.ui.adapter.MessageListAdapter;
 import com.jishi.jishi.ui.viewModel.MessageListItemViewModel;
 
@@ -36,8 +39,13 @@ public class MessageFragment extends Fragment {
     private LinearLayout btn_message_chat, btn_message_friendslist;
     private TextView txv_chat, txv_friendList;
     private ListView listView;
+    private ExpandableListView expandableListView;
+
     private List<MessageListItemViewModel> messageListItemViewModels = new ArrayList<>();
-    private MessageListAdapter adapter;
+    private List<FriendChapter> friendChapters = new ArrayList<>();
+
+    private MessageListAdapter listAdapter;
+    private MessageFriendsAdapter expandableListAdapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,10 +63,13 @@ public class MessageFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //TODO messageListItemViewModels need data
+        //TODO messageListItemViewModels need real data
         messageListItemViewModels.addAll(MessageMsgTD.getMessage());
+        friendChapters.addAll(MessageMsgTD.getFriendCHapter());
 
-        adapter = new MessageListAdapter(getContext(), messageListItemViewModels);
+        listAdapter = new MessageListAdapter(getContext(), messageListItemViewModels);
+        expandableListAdapter = new MessageFriendsAdapter(getContext(), friendChapters);
+
         initView();
 
         initListener();
@@ -68,21 +79,25 @@ public class MessageFragment extends Fragment {
 
     private void initView() {
         listView = getView().findViewById(R.id.lv_message_list);
+        expandableListView = getView().findViewById(R.id.elv_friends_list);
         btn_message_chat = getView().findViewById(R.id.btn_message_chat);
         btn_message_friendslist = getView().findViewById(R.id.btn_message_friendslist);
         txv_chat = getView().findViewById(R.id.txv_message_chat);
         txv_friendList = getView().findViewById(R.id.txv_message_friendlist);
 
-        listView.setAdapter(adapter);
+        listView.setAdapter(listAdapter);
+        expandableListView.setAdapter(expandableListAdapter);
+
+
     }
 
     private void initListener() {
         final LinearLayout.LayoutParams bigLayoutParams = new LinearLayout
-                .LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 7);
+                .LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT);
         final LinearLayout.LayoutParams smailLayoutParams = new LinearLayout
-                .LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 3);
+                .LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        final ValueAnimator animatorChat = ValueAnimator.ofFloat(3, 7);
+        final ValueAnimator animatorChat = ValueAnimator.ofFloat(2, 8);
         animatorChat.setInterpolator(new LinearInterpolator());
         animatorChat.setDuration(500);
         animatorChat.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -99,7 +114,7 @@ public class MessageFragment extends Fragment {
             }
         });
 
-        final ValueAnimator animatorFriend = ValueAnimator.ofFloat(3, 7);
+        final ValueAnimator animatorFriend = ValueAnimator.ofFloat(2, 8);
         animatorFriend.setInterpolator(new LinearInterpolator());
         animatorFriend.setDuration(500);
         animatorFriend.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -124,6 +139,8 @@ public class MessageFragment extends Fragment {
                 v.setSelected(true);
                 btn_message_friendslist.setSelected(false);
                 animatorChat.start();
+                listView.setVisibility(View.VISIBLE);
+                expandableListView.setVisibility(View.GONE);
             }
         });
 
@@ -135,6 +152,8 @@ public class MessageFragment extends Fragment {
                 v.setSelected(true);
                 btn_message_chat.setSelected(false);
                 animatorFriend.start();
+                listView.setVisibility(View.GONE);
+                expandableListView.setVisibility(View.VISIBLE);
             }
         });
     }

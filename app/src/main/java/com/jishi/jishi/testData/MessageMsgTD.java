@@ -1,6 +1,8 @@
 package com.jishi.jishi.testData;
 
 import com.jishi.jishi.R;
+import com.jishi.jishi.entity.Friend;
+import com.jishi.jishi.entity.FriendChapter;
 import com.jishi.jishi.ui.viewModel.MessageListItemViewModel;
 
 import java.util.ArrayList;
@@ -36,8 +38,31 @@ public class MessageMsgTD {
                 "886", 5));
         list.add(new MessageListItemViewModel("6", R.mipmap.ic_default_user_avatar,
                 "Sam", new Date(), "886", 15));
+        return list;
+    }
 
+    public static List<FriendChapter> getFriendCHapter() {
+        List<FriendChapter> list = new ArrayList<>();
+        FriendChapter fc = new FriendChapter("1", "be forver");
+        Friend a = new Friend("1", "Jack", R.mipmap.ic_default_user_avatar, "Love is evil!");
+        fc.addChild(a);
+        list.add(fc);
 
+        fc = new FriendChapter("2", "boy friend");
+        a = new Friend("2", "Tom", R.mipmap.ic_default_user_avatar, "evil is love!");
+        fc.addChild(a);
+        a = new Friend("3", "Amyson", R.mipmap.ic_default_user_avatar, "evil love is love");
+        fc.addChild(a);
+        list.add(fc);
+
+        fc = new FriendChapter("3", "best friend");
+        a = new Friend("4", "Adam", R.mipmap.ic_default_user_avatar, "evil is not love!");
+        fc.addChild(a);
+        a = new Friend("5", "Joun", R.mipmap.ic_default_user_avatar, "evil love is not love");
+        fc.addChild(a);
+        a = new Friend("6", "Amzason", R.mipmap.ic_default_user_avatar, "love is evil love");
+        fc.addChild(a);
+        list.add(fc);
         return list;
     }
 }
