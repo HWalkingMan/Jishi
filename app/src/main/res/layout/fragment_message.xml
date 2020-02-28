@@ -24,12 +24,14 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/btn_message_newinfo"
+                android:id="@+id/btn_message_chat"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="7"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/main_tab_menu_bg">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -38,16 +40,18 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:src="@mipmap/ic_message_information" />
+                    android:src="@mipmap/ic_message_chat" />
 
                 <TextView
+                    android:id="@+id/txv_message_chat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="10dp"
-                    android:text="新的资讯"
+                    android:text="聊天"
+                    android:visibility="visible"
                     android:textColor="@color/black"
-                    android:textSize="17dp"
+                    android:textSize="20dp"
                     android:textStyle="" />
             </LinearLayout>
 
@@ -58,11 +62,13 @@
                 android:background="@color/gainsboro" />
 
             <LinearLayout
-                android:id="@+id/btn_message_nearbyActi"
+                android:id="@+id/btn_message_friendslist"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="3"
                 android:gravity="center"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/main_tab_menu_bg"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -72,17 +78,18 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
-                    android:src="@mipmap/ic_message_activity" />
+                    android:src="@mipmap/ic_message_friends" />
 
                 <TextView
+                    android:id="@+id/txv_message_friendlist"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-
                     android:layout_marginRight="15dp"
-                    android:text="附近活动"
+                    android:text="列表"
+                    android:visibility="gone"
                     android:textColor="@color/black"
-                    android:textSize="17dp"
+                    android:textSize="20dp"
                     android:textStyle="" />
             </LinearLayout>
         </LinearLayout>
