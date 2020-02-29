@@ -136,11 +136,13 @@ public class MessageFragment extends Fragment {
             public void onClick(View v) {
                 bigLayoutParams.setMargins(0, 0, 2, 0);
                 smailLayoutParams.setMargins(2, 0, 0, 0);
-                v.setSelected(true);
-                btn_message_friendslist.setSelected(false);
-                animatorChat.start();
-                listView.setVisibility(View.VISIBLE);
-                expandableListView.setVisibility(View.GONE);
+                if (!v.isSelected()) {
+                    animatorChat.start();
+                    v.setSelected(true);
+                    btn_message_friendslist.setSelected(false);
+                    listView.setVisibility(View.VISIBLE);
+                    expandableListView.setVisibility(View.GONE);
+                }
             }
         });
 
@@ -149,11 +151,13 @@ public class MessageFragment extends Fragment {
             public void onClick(View v) {
                 bigLayoutParams.setMargins(2, 0, 0, 0);
                 smailLayoutParams.setMargins(0, 0, 2, 0);
-                v.setSelected(true);
-                btn_message_chat.setSelected(false);
-                animatorFriend.start();
-                listView.setVisibility(View.GONE);
-                expandableListView.setVisibility(View.VISIBLE);
+                if (!v.isSelected()) {
+                    animatorFriend.start();
+                    v.setSelected(true);
+                    btn_message_chat.setSelected(false);
+                    listView.setVisibility(View.GONE);
+                    expandableListView.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
