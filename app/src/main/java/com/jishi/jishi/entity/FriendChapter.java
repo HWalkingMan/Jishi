@@ -43,6 +43,10 @@ public class FriendChapter {
         friend.setChapterId(this.id);
     }
 
+    public void setChildren(List<Friend> children) {
+        this.children = children;
+    }
+
     public List<Friend> getChildren() {
         return children;
     }

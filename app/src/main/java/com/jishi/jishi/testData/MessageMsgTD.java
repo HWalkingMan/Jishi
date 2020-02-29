@@ -41,7 +41,7 @@ public class MessageMsgTD {
         return list;
     }
 
-    public static List<FriendChapter> getFriendCHapter() {
+    public static List<FriendChapter> getfriendchapter() {
         List<FriendChapter> list = new ArrayList<>();
         FriendChapter fc = new FriendChapter("1", "be forver");
         Friend a = new Friend("1", "Jack", R.mipmap.ic_default_user_avatar, "Love is evil!");

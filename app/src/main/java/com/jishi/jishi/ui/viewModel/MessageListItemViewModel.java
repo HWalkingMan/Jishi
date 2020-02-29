@@ -65,7 +65,6 @@ public class MessageListItemViewModel {
         //latestMsgDateStr = sdf.format(latestMsgDate);
         //TODO 更改时间显示模式
         int day = (int) ((currentDate.getTime() - latestMsgDate.getTime()) / (1000 * 60 * 60 * 24));
-        System.out.println("date:" + latestMsgDate + ",day=" + day);
         if (day == 0) {
             return new SimpleDateFormat("HH:mm", Locale.CHINA).format(latestMsgDate);
         } else if (day == 1) {
