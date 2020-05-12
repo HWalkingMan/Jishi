@@ -1,10 +1,8 @@
 package com.jishi.jishi.business;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.jishi.jishi.entity.CommonReturnType;
-import com.jishi.jishi.entity.Friend;
-import com.jishi.jishi.entity.FriendChapter;
+import com.jishi.jishi.entity.response.CommonReturnType;
+import com.jishi.jishi.entity.Message.Friend;
+import com.jishi.jishi.entity.Message.FriendChapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,7 +11,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -126,8 +123,6 @@ public class MessageFriendsBizImplTest {
                 "    \"errorMsg\": \"success\"\n" +
                 "}";
 
-        final CommonReturnType<List<FriendChapter>> fcFromJson = getFCFromJson(json);
-        System.out.println(fcFromJson);
     }
 
     private CommonReturnType<List<FriendChapter>> getFCFromJson(String json) {

@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jishi.jishi.R;
-import com.jishi.jishi.entity.Friend;
-import com.jishi.jishi.entity.FriendChapter;
+import com.jishi.jishi.entity.Message.Friend;
+import com.jishi.jishi.entity.Message.FriendChapter;
 
 import java.util.List;
 

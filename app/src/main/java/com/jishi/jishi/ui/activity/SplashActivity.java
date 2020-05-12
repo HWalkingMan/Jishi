@@ -82,7 +82,7 @@ public class SplashActivity extends AppCompatActivity {
                     }
                     break;
                 case JUMP_OUT_CODE:
-                    activity.startActivity(new Intent(activity, MainActivity.class));
+                    activity.startActivity(new Intent(activity, CoverActivity.class));
                     activity.finish();
                     break;
 

@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         final DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);//禁止手势滑动
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_menu_style, R.id.nav_menu_favourite, R.id.nav_menu_album,
                 R.id.nav_menu_file, R.id.nav_menu_setting, R.id.nav_menu_nightmode)

@@ -1,8 +1,8 @@
 package com.jishi.jishi.testData;
 
 import com.jishi.jishi.R;
-import com.jishi.jishi.entity.Friend;
-import com.jishi.jishi.entity.FriendChapter;
+import com.jishi.jishi.entity.Message.Friend;
+import com.jishi.jishi.entity.Message.FriendChapter;
 import com.jishi.jishi.ui.viewModel.MessageListItemViewModel;
 
 import java.util.ArrayList;
