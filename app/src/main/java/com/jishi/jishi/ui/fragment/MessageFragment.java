@@ -86,19 +86,21 @@ public class MessageFragment extends Fragment {
         //TODO messageListItemViewModels need real data
         messageListItemViewModels.addAll(MessageMsgTD.getMessage());
         listAdapter.notifyDataSetChanged();
-        messageFriendsBiz.loadFriendsList(getContext(), false, new MessageFriendsBiz.OnSuccessListener() {
-            @Override
-            public void onSuccess(List<FriendChapter> chapters) {
-                friendChapters.addAll(chapters);
-                expandableListAdapter.notifyDataSetChanged();
-                System.out.println(chapters);
-            }
-
-            @Override
-            public void onFailed(Exception e) {
-
-            }
-        });
+        friendChapters.addAll(MessageMsgTD.getfriendchapter());
+        expandableListAdapter.notifyDataSetChanged();
+//        messageFriendsBiz.loadFriendsList(getContext(), false, new MessageFriendsBiz.OnSuccessListener() {
+//            @Override
+//            public void onSuccess(List<FriendChapter> chapters) {
+//                friendChapters.addAll(chapters);
+//                expandableListAdapter.notifyDataSetChanged();
+//                System.out.println(chapters);
+//            }
+//
+//            @Override
+//            public void onFailed(Exception e) {
+//
+//            }
+//        });
     }
 
     private void initBiz() {
