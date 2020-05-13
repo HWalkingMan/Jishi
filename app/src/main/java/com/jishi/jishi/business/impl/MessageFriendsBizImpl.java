@@ -1,10 +1,11 @@
-package com.jishi.jishi.business;
+package com.jishi.jishi.business.impl;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 
 import com.blankj.utilcode.util.GsonUtils;
+import com.jishi.jishi.business.MessageFriendsBiz;
 import com.jishi.jishi.entity.response.CommonReturnType;
 import com.jishi.jishi.entity.Message.FriendChapter;
 

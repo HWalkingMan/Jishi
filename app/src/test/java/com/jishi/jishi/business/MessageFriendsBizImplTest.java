@@ -1,5 +1,6 @@
 package com.jishi.jishi.business;
 
+import com.jishi.jishi.business.impl.MessageFriendsBizImpl;
 import com.jishi.jishi.entity.response.CommonReturnType;
 import com.jishi.jishi.entity.Message.Friend;
 import com.jishi.jishi.entity.Message.FriendChapter;

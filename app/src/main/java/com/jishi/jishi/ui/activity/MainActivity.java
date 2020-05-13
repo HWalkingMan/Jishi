@@ -1,5 +1,8 @@
 package com.jishi.jishi.ui.activity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -11,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.jishi.jishi.R;
@@ -33,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
 
     public static final long MAX_EXIT_TIME = 2000;
+    private final static String MY_PRE_NAME = "preferences";
+    private final static String TOKEN = "TOKEN";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,6 +62,24 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+
+        initNavigationView();
+    }
+
+    private void initNavigationView() {
+        LinearLayout nav_menu_nightmode = findViewById(R.id.nav_menu_nightmode);
+        nav_menu_nightmode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedPreferences = MainActivity.this.getSharedPreferences(MY_PRE_NAME, Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove(TOKEN);
+                editor.apply();
+                Toast.makeText(MainActivity.this, "已退出登录", Toast.LENGTH_SHORT).show();
+                MainActivity.this.startActivity(new Intent(MainActivity.this, CoverActivity.class));
+                MainActivity.this.finish();
+            }
+        });
     }
 
 

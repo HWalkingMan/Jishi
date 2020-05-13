@@ -3,6 +3,16 @@
     <string name="nullplacehold" />
     <string name="countdownNum">跳过 3</string>
     <string name="skip">跳过</string>
+    <string name="new_user">新用户</string>
+    <string name="signin">登入</string>
+    <string name="forget_pass">忘记密码</string>
+    <string name="tip_password">请输入密码</string>
+    <string name="tip_account">请输入账号</string>
+    <string name="enroll">注册</string>
+    <string name="tip_phone">请输入手机号</string>
+    <string name="tip_password_repeat">请确认密码</string>
+    <string name="tologin">马上登录</string>
+    <string name="enroll_success_tip">注册成功！您的账号为：\n\n\n\n请妥善保管您的账号\n这将是你登录的唯一凭证</string>
 
     <string-array name="main_menu">
         <item>实时通知</item>

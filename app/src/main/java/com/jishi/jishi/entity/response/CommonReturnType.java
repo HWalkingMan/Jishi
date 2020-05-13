@@ -12,6 +12,7 @@ public class CommonReturnType<T> {
     private String errorMsg;
 
     public CommonReturnType() {
+        errorCode = 0;
     }
 
     public static CommonReturnType build(Object data) {
@@ -46,12 +47,62 @@ public class CommonReturnType<T> {
         this.errorMsg = errorMsg;
     }
 
-    @Override
-    public String toString() {
-        return "CommonReturnType{" +
-                "data=" + data +
-                ", errorCode=" + errorCode +
-                ", errorMsg='" + errorMsg + '\'' +
-                '}';
+    public static CommonReturnType errorResult(int code, String msg) {
+        CommonReturnType result = new CommonReturnType();
+        return result.error(code, msg);
+    }
+
+    public static CommonReturnType okResult(int code, String msg) {
+        CommonReturnType result = new CommonReturnType();
+        return result.ok(code, null, msg);
+    }
+
+    public static CommonReturnType okResult(Object data) {
+        CommonReturnType result = setAppHttpCodeEnum(AppHttpCodeEnum.SUCCESS,
+                AppHttpCodeEnum.SUCCESS.getErrorMessage());
+        if (data != null) {
+            result.setData(data);
+        }
+        return result;
+    }
+
+    public static CommonReturnType errorResult(AppHttpCodeEnum enums) {
+        return setAppHttpCodeEnum(enums, enums.getErrorMessage());
+    }
+
+    public static CommonReturnType errorResult(AppHttpCodeEnum enums, String errorMessage) {
+        return setAppHttpCodeEnum(enums, errorMessage);
+    }
+
+    public static CommonReturnType setAppHttpCodeEnum(AppHttpCodeEnum enums) {
+        return okResult(enums.getCode(), enums.getErrorMessage());
+    }
+
+    private static CommonReturnType setAppHttpCodeEnum(AppHttpCodeEnum enums, String errorMessage) {
+        return okResult(enums.getCode(), errorMessage);
+    }
+
+    public CommonReturnType<?> error(Integer code, String msg) {
+        this.errorCode = code;
+        this.errorMsg = msg;
+        return this;
+    }
+
+    public CommonReturnType<?> ok(Integer code, T data) {
+        this.errorCode = code;
+        this.data = data;
+        return this;
+    }
+
+    public CommonReturnType<?> ok(Integer code, T data, String msg) {
+        this.errorCode = code;
+        this.data = data;
+        this.errorMsg = msg;
+        return this;
+    }
+
+    public CommonReturnType<?> ok(T data) {
+        this.data = data;
+        return this;
     }
 }
