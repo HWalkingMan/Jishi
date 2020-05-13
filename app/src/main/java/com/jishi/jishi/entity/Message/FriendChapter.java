@@ -1,4 +1,4 @@
-package com.jishi.jishi.entity;
+package com.jishi.jishi.entity.Message;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +41,10 @@ public class FriendChapter {
     public void addChild(Friend friend) {
         children.add(friend);
         friend.setChapterId(this.id);
+    }
+
+    public void setChildren(List<Friend> children) {
+        this.children = children;
     }
 
     public List<Friend> getChildren() {

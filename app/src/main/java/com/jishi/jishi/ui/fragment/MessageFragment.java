@@ -20,7 +20,9 @@ import android.widget.TextView;
 
 
 import com.jishi.jishi.R;
-import com.jishi.jishi.entity.FriendChapter;
+import com.jishi.jishi.business.MessageFriendsBiz;
+import com.jishi.jishi.business.impl.MessageFriendsBizImpl;
+import com.jishi.jishi.entity.Message.FriendChapter;
 import com.jishi.jishi.testData.MessageMsgTD;
 import com.jishi.jishi.ui.adapter.MessageFriendsAdapter;
 import com.jishi.jishi.ui.adapter.MessageListAdapter;
@@ -47,6 +49,9 @@ public class MessageFragment extends Fragment {
     private MessageListAdapter listAdapter;
     private MessageFriendsAdapter expandableListAdapter;
 
+    private MessageFriendsBiz messageFriendsBiz;
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,12 +68,12 @@ public class MessageFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        //TODO messageListItemViewModels need real data
-        messageListItemViewModels.addAll(MessageMsgTD.getMessage());
-        friendChapters.addAll(MessageMsgTD.getFriendCHapter());
 
-        listAdapter = new MessageListAdapter(getContext(), messageListItemViewModels);
-        expandableListAdapter = new MessageFriendsAdapter(getContext(), friendChapters);
+        initBiz();
+
+        initAdapter();
+
+        initData();
 
         initView();
 
@@ -77,7 +82,36 @@ public class MessageFragment extends Fragment {
         perpareView();
     }
 
+    private void initData() {
+        //TODO messageListItemViewModels need real data
+        messageListItemViewModels.addAll(MessageMsgTD.getMessage());
+        listAdapter.notifyDataSetChanged();
+        messageFriendsBiz.loadFriendsList(getContext(), false, new MessageFriendsBiz.OnSuccessListener() {
+            @Override
+            public void onSuccess(List<FriendChapter> chapters) {
+                friendChapters.addAll(chapters);
+                expandableListAdapter.notifyDataSetChanged();
+                System.out.println(chapters);
+            }
+
+            @Override
+            public void onFailed(Exception e) {
+
+            }
+        });
+    }
+
+    private void initBiz() {
+        messageFriendsBiz = new MessageFriendsBizImpl();
+    }
+
+    private void initAdapter() {
+        listAdapter = new MessageListAdapter(getContext(), messageListItemViewModels);
+        expandableListAdapter = new MessageFriendsAdapter(getContext(), friendChapters);
+    }
+
     private void initView() {
+        assert getView() != null;
         listView = getView().findViewById(R.id.lv_message_list);
         expandableListView = getView().findViewById(R.id.elv_friends_list);
         btn_message_chat = getView().findViewById(R.id.btn_message_chat);

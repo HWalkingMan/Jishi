@@ -1,4 +1,4 @@
-package com.jishi.jishi.entity;
+package com.jishi.jishi.entity.Message;
 
 /**
  * @author WM

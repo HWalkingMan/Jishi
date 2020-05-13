@@ -1,8 +1,8 @@
 package com.jishi.jishi.testData;
 
 import com.jishi.jishi.R;
-import com.jishi.jishi.entity.Friend;
-import com.jishi.jishi.entity.FriendChapter;
+import com.jishi.jishi.entity.Message.Friend;
+import com.jishi.jishi.entity.Message.FriendChapter;
 import com.jishi.jishi.ui.viewModel.MessageListItemViewModel;
 
 import java.util.ArrayList;
@@ -41,7 +41,7 @@ public class MessageMsgTD {
         return list;
     }
 
-    public static List<FriendChapter> getFriendCHapter() {
+    public static List<FriendChapter> getfriendchapter() {
         List<FriendChapter> list = new ArrayList<>();
         FriendChapter fc = new FriendChapter("1", "be forver");
         Friend a = new Friend("1", "Jack", R.mipmap.ic_default_user_avatar, "Love is evil!");
