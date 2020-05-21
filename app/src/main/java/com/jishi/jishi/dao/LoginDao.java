@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.blankj.utilcode.util.EncryptUtils;
-import com.jishi.jishi.entity.login.Account;
-import com.jishi.jishi.entity.login.Signon;
+import com.jishi.jishi.entity.account.Account;
+import com.jishi.jishi.entity.account.Signon;
 
 /**
  * @author WM

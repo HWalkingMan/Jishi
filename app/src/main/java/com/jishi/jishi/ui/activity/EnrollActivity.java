@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.jishi.jishi.R;
 import com.jishi.jishi.business.LoginBiz;
 import com.jishi.jishi.business.impl.LoginBizImpl;
-import com.jishi.jishi.entity.login.Signon;
+import com.jishi.jishi.entity.account.Signon;
 import com.jishi.jishi.entity.response.CommonReturnType;
 
 public class EnrollActivity extends AppCompatActivity {

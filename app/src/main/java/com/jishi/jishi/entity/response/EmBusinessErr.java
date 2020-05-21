@@ -1,6 +1,6 @@
 package com.jishi.jishi.entity.response;
 
-public enum AppHttpCodeEnum {
+public enum EmBusinessErr implements CommonError {
 
     // 成功段0
     SUCCESS(0, "操作成功"), // 登录段1~50
@@ -14,19 +14,27 @@ public enum AppHttpCodeEnum {
             "数据不存在"), // 数据错误 3000~3500
     NO_OPERATOR_AUTH(3000, "无权限操作");
 
-    int code;
-    String errorMessage;
+    private int errCode;
+    private String errMsg;
 
-    AppHttpCodeEnum(int code, String errorMessage) {
-        this.code = code;
-        this.errorMessage = errorMessage;
+    EmBusinessErr(int errCode, String errMsg) {
+        this.errCode = errCode;
+        this.errMsg = errMsg;
     }
 
-    public int getCode() {
-        return code;
+    @Override
+    public int getErrCode() {
+        return errCode;
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
+    @Override
+    public String getErrMsg() {
+        return errMsg;
+    }
+
+    @Override
+    public CommonError setErrMsg(String errMsg) {
+        this.errMsg = errMsg;
+        return this;
     }
 }

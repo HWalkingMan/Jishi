@@ -1,6 +1,6 @@
 package com.jishi.jishi.util;
 
-import com.jishi.jishi.entity.login.Account;
+import com.jishi.jishi.entity.account.Account;
 
 /**
  * @author WM

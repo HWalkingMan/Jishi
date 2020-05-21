@@ -2,8 +2,7 @@ package com.jishi.jishi.business;
 
 import android.content.Context;
 
-import com.jishi.jishi.entity.login.Account;
-import com.jishi.jishi.entity.login.Signon;
+import com.jishi.jishi.entity.account.Signon;
 import com.jishi.jishi.entity.response.CommonReturnType;
 
 /**

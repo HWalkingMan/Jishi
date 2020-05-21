@@ -1,4 +1,4 @@
-package com.jishi.jishi.entity.login;
+package com.jishi.jishi.entity.account;
 
 
 /**

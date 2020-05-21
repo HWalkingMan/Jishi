@@ -1,4 +1,4 @@
-package com.jishi.jishi.entity.login;
+package com.jishi.jishi.entity.account;
 
 /**
  * @author WM
@@ -35,5 +35,14 @@ public class Signon {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Signon{" +
+                "accountId=" + accountId +
+                ", phoneNum='" + phoneNum + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

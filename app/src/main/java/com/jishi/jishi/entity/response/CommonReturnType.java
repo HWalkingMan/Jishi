@@ -1,5 +1,6 @@
 package com.jishi.jishi.entity.response;
 
+
 /**
  * @Description
  * @Author WM
@@ -58,28 +59,28 @@ public class CommonReturnType<T> {
     }
 
     public static CommonReturnType okResult(Object data) {
-        CommonReturnType result = setAppHttpCodeEnum(AppHttpCodeEnum.SUCCESS,
-                AppHttpCodeEnum.SUCCESS.getErrorMessage());
+        CommonReturnType result = setEmBusinessErr(EmBusinessErr.SUCCESS,
+                EmBusinessErr.SUCCESS.getErrMsg());
         if (data != null) {
             result.setData(data);
         }
         return result;
     }
 
-    public static CommonReturnType errorResult(AppHttpCodeEnum enums) {
-        return setAppHttpCodeEnum(enums, enums.getErrorMessage());
+    public static CommonReturnType errorResult(EmBusinessErr enums) {
+        return setEmBusinessErr(enums, enums.getErrMsg());
     }
 
-    public static CommonReturnType errorResult(AppHttpCodeEnum enums, String errorMessage) {
-        return setAppHttpCodeEnum(enums, errorMessage);
+    public static CommonReturnType errorResult(EmBusinessErr enums, String errorMessage) {
+        return setEmBusinessErr(enums, errorMessage);
     }
 
-    public static CommonReturnType setAppHttpCodeEnum(AppHttpCodeEnum enums) {
-        return okResult(enums.getCode(), enums.getErrorMessage());
+    public static CommonReturnType setEmBusinessErr(EmBusinessErr enums) {
+        return okResult(enums.getErrCode(), enums.getErrMsg());
     }
 
-    private static CommonReturnType setAppHttpCodeEnum(AppHttpCodeEnum enums, String errorMessage) {
-        return okResult(enums.getCode(), errorMessage);
+    private static CommonReturnType setEmBusinessErr(EmBusinessErr enums, String errorMessage) {
+        return okResult(enums.getErrCode(), errorMessage);
     }
 
     public CommonReturnType<?> error(Integer code, String msg) {
@@ -104,5 +105,11 @@ public class CommonReturnType<T> {
     public CommonReturnType<?> ok(T data) {
         this.data = data;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "CommonReturnType{" + "data=" + data + ", errorCode=" + errorCode + ", errorMsg='"
+                + errorMsg + '\'' + '}';
     }
 }
