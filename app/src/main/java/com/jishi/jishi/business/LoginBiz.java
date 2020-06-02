@@ -11,7 +11,7 @@ import com.jishi.jishi.entity.response.CommonReturnType;
  * @date 2020/5/9 11:11
  */
 public interface LoginBiz {
-    boolean isLogined();
+    void online();
 
     void login(Context context, Signon signon, OnLoginSuccessListener successListener);
 

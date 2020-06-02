@@ -19,7 +19,8 @@ public class LoginDao {
     private static final String selectSignonByAP = "select * from signon where accountid = ? and password = ?";
     private static final String selectAccountByAccountid = "select * from account where accountid = ?";
     private static final String insertSignon = "insert into signon values(null,?,?);";
-    private static final String insertAccount = "insert into account values(?,null,null,null);";
+    private static final String insertAccount = "insert into account (id) values(?);";
+    private static final String updateAccount = "update account set nickname=?,signature=?,avatar_url=? where accountid=?";
 
     public static Signon register(SQLiteDatabase db, Signon signon) throws Exception {
         ContentValues signonValue = new ContentValues();
@@ -54,8 +55,28 @@ public class LoginDao {
         account.setAccountId(cursor1.getInt(cursor1.getColumnIndex("accountid")));
         account.setNickName(cursor1.getString(cursor1.getColumnIndex("nickname")));
         account.setSignature(cursor1.getString(cursor1.getColumnIndex("signature")));
-        account.setAvatarURL(cursor1.getString(cursor1.getColumnIndex("img64")));
+        account.setAvatarURL(cursor1.getString(cursor1.getColumnIndex("avatar_url")));
         Log.d("Login", account.toString());
         return account;
+    }
+
+    public static Account getAccount(SQLiteDatabase db, Integer accountid) {
+        final Cursor cursor1 = db.rawQuery(selectAccountByAccountid, new String[]{accountid.toString()});
+        if (cursor1.getCount() != 1)
+            return null;
+        cursor1.moveToFirst();
+        Account account = new Account();
+        account.setAccountId(cursor1.getInt(cursor1.getColumnIndex("accountid")));
+        account.setNickName(cursor1.getString(cursor1.getColumnIndex("nickname")));
+        account.setSignature(cursor1.getString(cursor1.getColumnIndex("signature")));
+        account.setAvatarURL(cursor1.getString(cursor1.getColumnIndex("avatar_url")));
+        Log.d("getAccount", account.toString());
+        return account;
+    }
+
+    public static void updateAccount(SQLiteDatabase db, Account account) {
+        db.execSQL(updateAccount, new Object[]{account.getNickName(), account.getSignature(),
+                account.getAvatarURL(), account.getAccountId()});
+        Log.d("updateAccount", account.getAccountId().toString());
     }
 }

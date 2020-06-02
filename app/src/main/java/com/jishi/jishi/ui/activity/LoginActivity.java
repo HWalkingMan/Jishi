@@ -20,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private final static String MY_PRE_NAME = "preferences";
     private final static String TOKEN = "TOKEN";
+    private final static String ACCOUNTID = "ACCOUNTID";
 
     private EditText edt_accountId, edt_password;
     private Button btn_login, btn_forget_pass;
@@ -57,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String accoutnId = edt_accountId.getText().toString();
                 String password = edt_password.getText().toString();
-                Signon signon = new Signon();
+                final Signon signon = new Signon();
                 signon.setAccountId(Integer.valueOf(accoutnId));
                 signon.setPassword(password);
                 loginBiz.login(LoginActivity.this, signon, new LoginBiz.OnLoginSuccessListener() {
@@ -67,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
                             SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences(MY_PRE_NAME, Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putString(TOKEN, returnType.getData());
+                            editor.putInt(ACCOUNTID, signon.getAccountId().intValue());
                             editor.apply();
                             Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                             LoginActivity.this.startActivity(new Intent(LoginActivity.this, MainActivity.class));

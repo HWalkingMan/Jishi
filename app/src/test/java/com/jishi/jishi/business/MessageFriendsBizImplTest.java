@@ -147,8 +147,8 @@ public class MessageFriendsBizImplTest {
                     String fid = friendObj.getString("id");
                     String nickname = friendObj.getString("nickname");
                     String signature = friendObj.getString("signature");
-                    int avatar = friendObj.getInt("avatar");
-                    friendChapter.addChild(new Friend(fid, name, avatar, signature));
+                    String avatarurl = friendObj.getString("avatar");
+                    friendChapter.addChild(new Friend(fid, name, avatarurl, signature));
                 }
                 chapters.add(friendChapter);
             }

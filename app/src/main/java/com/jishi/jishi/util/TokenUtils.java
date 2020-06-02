@@ -7,7 +7,7 @@ import com.jishi.jishi.entity.account.Account;
  * @description
  * @date 2020/5/13 15:27
  */
-public class TokenUtil {
+public class TokenUtils {
     public static String createToken(Account account) {
         return account.getAccountId().toString();
     }

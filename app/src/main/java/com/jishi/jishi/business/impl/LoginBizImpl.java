@@ -14,9 +14,7 @@ import com.jishi.jishi.dao.LoginDao;
 import com.jishi.jishi.entity.account.Account;
 import com.jishi.jishi.entity.account.Signon;
 import com.jishi.jishi.entity.response.CommonReturnType;
-import com.jishi.jishi.util.TokenUtil;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
@@ -35,6 +33,7 @@ import okhttp3.Response;
 public class LoginBizImpl implements LoginBiz {
     private final String REGISTER_URL = "http://192.168.56.2:8080/account/v1/enroll";
     private final String LOGIN_URL = "http://192.168.56.2:8080/account/v1/login";
+    private final String ONLINE_URL = "http://192.168.56.2:8080/account/v1/online";
     private OkHttpClient client;
 
     public LoginBizImpl() {
@@ -45,8 +44,8 @@ public class LoginBizImpl implements LoginBiz {
     }
 
     @Override
-    public boolean isLogined() {
-        return false;
+    public void online() {
+
     }
 
     @Override

@@ -22,7 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table signon (accountid integer  primary key autoincrement,phonenum text not null unique, password text not null);");
-        db.execSQL("create table account (accountid integer primary key autoincrement,nickname text default \"unnamed\",signature text default \"nothing said\",img64 blob);");
+        db.execSQL("create table account (accountid integer primary key autoincrement,nickname text default \"unnamed\",signature text default \"nothing said\",avatar_url text);");
         db.execSQL("insert into signon values(10001,\"13212341234\",\"********\");");
         db.execSQL("insert into account values (10001,\"unname\",\"nothing to said\",null);");
     }
