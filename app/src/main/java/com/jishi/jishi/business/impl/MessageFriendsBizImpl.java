@@ -7,7 +7,7 @@ import android.os.AsyncTask;
 import com.blankj.utilcode.util.GsonUtils;
 import com.jishi.jishi.business.MessageFriendsBiz;
 import com.jishi.jishi.entity.response.CommonReturnType;
-import com.jishi.jishi.entity.Message.FriendChapter;
+import com.jishi.jishi.entity.message.FriendChapter;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,8 @@
 package com.jishi.jishi.testData;
 
 import com.jishi.jishi.R;
-import com.jishi.jishi.entity.Message.Friend;
-import com.jishi.jishi.entity.Message.FriendChapter;
+import com.jishi.jishi.entity.message.Friend;
+import com.jishi.jishi.entity.message.FriendChapter;
 import com.jishi.jishi.ui.viewModel.MessageListItemViewModel;
 
 import java.util.ArrayList;
@@ -42,25 +42,26 @@ public class MessageMsgTD {
     }
 
     public static List<FriendChapter> getfriendchapter() {
+        final String url = "https://bkimg.cdn.bcebos.com/pic/63d0f703918fa0ec08faacc53fde4eee3d6d54fb6deb?x-bce-process=image/resize,m_lfit,w_268,limit_1/format,f_jpg";
         List<FriendChapter> list = new ArrayList<>();
         FriendChapter fc = new FriendChapter("1", "be forver");
-        Friend a = new Friend("1", "Jack", R.mipmap.ic_default_user_avatar, "Love is evil!");
+        Friend a = new Friend("1", "Jack", url, "Love is evil!");
         fc.addChild(a);
         list.add(fc);
 
         fc = new FriendChapter("2", "boy friend");
-        a = new Friend("2", "Tom", R.mipmap.ic_default_user_avatar, "evil is love!");
+        a = new Friend("2", "Tom", url, "evil is love!");
         fc.addChild(a);
-        a = new Friend("3", "Amyson", R.mipmap.ic_default_user_avatar, "evil love is love");
+        a = new Friend("3", "Amyson", url, "evil love is love");
         fc.addChild(a);
         list.add(fc);
 
         fc = new FriendChapter("3", "best friend");
-        a = new Friend("4", "Adam", R.mipmap.ic_default_user_avatar, "evil is not love!");
+        a = new Friend("4", "Adam", url, "evil is not love!");
         fc.addChild(a);
-        a = new Friend("5", "Joun", R.mipmap.ic_default_user_avatar, "evil love is not love");
+        a = new Friend("5", "Joun", url, "evil love is not love");
         fc.addChild(a);
-        a = new Friend("6", "Amzason", R.mipmap.ic_default_user_avatar, "love is evil love");
+        a = new Friend("6", "Amzason", url, "love is evil love");
         fc.addChild(a);
         list.add(fc);
         return list;

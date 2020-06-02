@@ -54,7 +54,7 @@ public class LoginDao {
         account.setAccountId(cursor1.getInt(cursor1.getColumnIndex("accountid")));
         account.setNickName(cursor1.getString(cursor1.getColumnIndex("nickname")));
         account.setSignature(cursor1.getString(cursor1.getColumnIndex("signature")));
-        account.setImg64(cursor1.getString(cursor1.getColumnIndex("img64")));
+        account.setAvatarURL(cursor1.getString(cursor1.getColumnIndex("img64")));
         Log.d("Login", account.toString());
         return account;
     }

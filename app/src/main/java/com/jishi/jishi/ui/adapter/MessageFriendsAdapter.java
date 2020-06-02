@@ -9,8 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jishi.jishi.R;
-import com.jishi.jishi.entity.Message.Friend;
-import com.jishi.jishi.entity.Message.FriendChapter;
+import com.jishi.jishi.entity.message.Friend;
+import com.jishi.jishi.entity.message.FriendChapter;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -101,7 +102,13 @@ public class MessageFriendsAdapter extends BaseExpandableListAdapter {
         Friend friend = data.get(groupPosition).getChildren().get(childPosition);
         viewHolder.signature.setText(friend.getSignature());
         viewHolder.nickname.setText(friend.getNickname());
-        viewHolder.avatar.setImageResource(friend.getAvatar());
+        Picasso.with(context)
+                .load(friend.getAvatarURL())
+                .fit()
+                .placeholder(R.mipmap.ic_default_user_avatar)
+                .error(R.mipmap.ic_pic_error)
+                .noFade()
+                .into(viewHolder.avatar);
 
         return convertView;
     }

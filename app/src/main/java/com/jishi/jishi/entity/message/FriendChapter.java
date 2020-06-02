@@ -1,4 +1,4 @@
-package com.jishi.jishi.entity.Message;
+package com.jishi.jishi.entity.message;
 
 import java.util.ArrayList;
 import java.util.List;

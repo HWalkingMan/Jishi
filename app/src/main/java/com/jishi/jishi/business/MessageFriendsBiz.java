@@ -2,7 +2,7 @@ package com.jishi.jishi.business;
 
 import android.content.Context;
 
-import com.jishi.jishi.entity.Message.FriendChapter;
+import com.jishi.jishi.entity.message.FriendChapter;
 
 import java.util.List;
 

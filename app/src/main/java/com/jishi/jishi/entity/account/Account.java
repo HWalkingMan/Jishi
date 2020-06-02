@@ -10,7 +10,7 @@ public class Account {
     private Integer accountId;
     private String nickName;
     private String signature;
-    private String img64;
+    private String avatarURL;
 
     public Account() {
     }
@@ -40,12 +40,12 @@ public class Account {
         this.signature = signature;
     }
 
-    public String getImg64() {
-        return img64;
+    public String getAvatarURL() {
+        return avatarURL;
     }
 
-    public void setImg64(String img64) {
-        this.img64 = img64;
+    public void setAvatarURL(String avatarURL) {
+        this.avatarURL = avatarURL;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class Account {
                 "accountId=" + accountId +
                 ", nickName='" + nickName + '\'' +
                 ", signature='" + signature + '\'' +
-                ", img64='" + img64 + '\'' +
+                ", img64='" + avatarURL + '\'' +
                 '}';
     }
 }

@@ -22,7 +22,7 @@ import android.widget.TextView;
 import com.jishi.jishi.R;
 import com.jishi.jishi.business.MessageFriendsBiz;
 import com.jishi.jishi.business.impl.MessageFriendsBizImpl;
-import com.jishi.jishi.entity.Message.FriendChapter;
+import com.jishi.jishi.entity.message.FriendChapter;
 import com.jishi.jishi.testData.MessageMsgTD;
 import com.jishi.jishi.ui.adapter.MessageFriendsAdapter;
 import com.jishi.jishi.ui.adapter.MessageListAdapter;

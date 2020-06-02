@@ -1,4 +1,4 @@
-package com.jishi.jishi.entity.Message;
+package com.jishi.jishi.entity.message;
 
 /**
  * @author WM
@@ -8,7 +8,7 @@ package com.jishi.jishi.entity.Message;
 public class Friend {
     private String id;
     private String nickname;
-    private int Avatar;
+    private String avatarURL;
     private String signature;
 
     private String chapterId;
@@ -16,10 +16,10 @@ public class Friend {
     public Friend() {
     }
 
-    public Friend(String id, String nickname, int avatar, String signature) {
+    public Friend(String id, String nickname, String avatarURL, String signature) {
         this.id = id;
         this.nickname = nickname;
-        Avatar = avatar;
+        this.avatarURL = avatarURL;
         this.signature = signature;
     }
 
@@ -39,12 +39,12 @@ public class Friend {
         this.nickname = nickname;
     }
 
-    public int getAvatar() {
-        return Avatar;
+    public String getAvatarURL() {
+        return avatarURL;
     }
 
-    public void setAvatar(int avatar) {
-        Avatar = avatar;
+    public void setAvatarURL(String avatarURL) {
+        this.avatarURL = avatarURL;
     }
 
     public String getSignature() {
@@ -68,7 +68,7 @@ public class Friend {
         return "Friend{" +
                 "id='" + id + '\'' +
                 ", nickname='" + nickname + '\'' +
-                ", Avatar=" + Avatar +
+                ", avatarURL='" + avatarURL + '\'' +
                 ", signature='" + signature + '\'' +
                 ", chapterId='" + chapterId + '\'' +
                 '}';
