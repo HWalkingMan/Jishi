@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.jishi.jishi.R;
 
 public class SettingActivity extends AppCompatActivity {
@@ -54,6 +55,7 @@ public class SettingActivity extends AppCompatActivity {
                 Toast.makeText(SettingActivity.this, "已退出登录", Toast.LENGTH_SHORT).show();
                 SettingActivity.this.startActivity(new Intent(SettingActivity.this, CoverActivity.class));
                 SettingActivity.this.finish();
+                ActivityUtils.finishActivity(MainActivity.class);
             }
         });
 
