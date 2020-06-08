@@ -62,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imv_navigation_avatar;
     private TextView txv_navigation_nickname, txv_navigation_signature;
 
+    private LinearLayout nav_menu_nightmode;
+    private LinearLayout nav_menu_setting;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         accountBiz = new AccountBizImpl();
         initView();
 
-        initHeaderView();
         setSupportActionBar(toolbar);
 
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);//禁止手势滑动
@@ -84,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        initNavigationView();
+        initDrawerViewListener();
         initAccountData();
     }
 
@@ -92,6 +94,14 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+        initDrawerView();
+    }
+
+    private void initDrawerView() {
+        initHeaderView();
+
+        nav_menu_nightmode = findViewById(R.id.nav_menu_nightmode);
+        nav_menu_setting = findViewById(R.id.nav_menu_setting);
     }
 
     private void initHeaderView() {
@@ -100,19 +110,17 @@ public class MainActivity extends AppCompatActivity {
         txv_navigation_signature = navigationView.getHeaderView(0).findViewById(R.id.txv_navigation_signature);
     }
 
-    private void initNavigationView() {
-        LinearLayout nav_menu_nightmode = findViewById(R.id.nav_menu_nightmode);
+    private void initDrawerViewListener() {
         nav_menu_nightmode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sharedPreferences = MainActivity.this.getSharedPreferences(MY_PRE_NAME, Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.remove(TOKEN);
-                editor.remove(ACCOUNTID);
-                editor.apply();
-                Toast.makeText(MainActivity.this, "已退出登录", Toast.LENGTH_SHORT).show();
-                MainActivity.this.startActivity(new Intent(MainActivity.this, CoverActivity.class));
-                MainActivity.this.finish();
+
+            }
+        });
+        nav_menu_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.this.startActivity(new Intent(MainActivity.this, SettingActivity.class));
             }
         });
     }
@@ -155,8 +163,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 txv_navigation_nickname.setText(account.getNickName());
                 txv_navigation_signature.setText(account.getSignature());
-
-                // FIXME: 2020/6/2 toolbar.setNavigationIcon();
             }
 
             @Override
