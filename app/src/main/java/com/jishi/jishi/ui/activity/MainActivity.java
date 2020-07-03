@@ -212,6 +212,23 @@ public class MainActivity extends AppCompatActivity {
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }
+                        Picasso.with(MainActivity.this)
+                                .load(file)
+                                .error(R.mipmap.ic_pic_error)
+                                .noFade()
+                                .fit()
+                                .into(imv_navigation_avatar, new com.squareup.picasso.Callback() {
+                                    @Override
+                                    public void onSuccess() {
+                                        Drawable drawable = imv_navigation_avatar.getDrawable();
+                                        drawable = DrawableUtils.zoomAndRadiusDrawable(drawable, 250, 250, 125);
+                                        toolbar.setNavigationIcon(drawable);
+                                    }
+
+                                    @Override
+                                    public void onError() {
+                                    }
+                                });
                         //-------------------------
                         /*
                         accountBiz.uploadUserImage(MainActivity.this, new String(imgBytes), new AccountBiz.Callback<String>() {
